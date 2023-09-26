@@ -39,9 +39,12 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
       result.success("Android " + android.os.Build.VERSION.RELEASE);
     } else if (call.method == "start") {
       mResult = result
+
+      IdenfyCommonColor
+
       val idenfySettingsV2 = IdenfySettingsV2.IdenfyBuilderV2()
               .withAuthToken(call.argument<String>("authToken")!!)
-              .build()
+              .build();
 
       IdenfyController.getInstance().initializeIdenfySDKV2WithManual(this.activity, IdenfyController.IDENFY_REQUEST_CODE, idenfySettingsV2)
     } else if (call.method == "startFaceAuth") {
