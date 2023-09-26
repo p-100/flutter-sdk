@@ -1,3 +1,49 @@
+## 2.3.6
+* Android SDK updated to 8.2.1
+* minSdkVersion decreased to API 21
+* Face authentication virtual camera detection will work from API 26
+* HU translations fix
+
+## 2.3.5
+* Android SDK updated to 8.2.0
+* iOS SDK updated to 8.2.1
+* Added Android virtual camera checks in Face Authentication (Will result in a failed authentication)
+* Increased Android minSdkVersion raised to API 26
+* Added KYC questionnaire Color question
+* Added KYC questionnaire conditions. [More](/mobile/Android/android-sdk#custom-kyc-questionnaire)
+* Added NFC optional feature. [More](/mobile/Android/android-sdk#nfc-optional)
+* Increased photo resolution
+* Improved pdf files validation
+* Fixed minor UI fixes
+
+## 2.3.4
+* Android SDK updated to 8.1.7.1
+* iOS SDK updated to 8.1.9
+* Fixed HU translations
+
+## 2.3.3
+* Android SDK updated to 8.1.7
+* iOS SDK updated to 8.1.8
+* Fixed back button states in country & document selections
+* Fixed camera permission view descriptions
+
+## 2.3.2
+* Android SDK updated to 8.1.6
+* iOS SDK updated to 8.1.7
+* Face Detection now validates small faces. [More](https://documentation.idenfy.com/mobile/Android/android-sdk#face-detection)
+* Fixed face detection error handling on Android
+* Fixed a crash on iOS Face authentication when camera permissions are denied
+* Fixed issued country view titles on iOS
+
+## 2.3.1
+* iOS, Android SDK's updated to 8.1.0
+* Added an option to skip Camera On Boarding View on Face authentication. [More](https://documentation.idenfy.com/other-fraud/FaceAuthentication)
+
+## 2.3.0
+* iOS SDK updated to 8.0.0
+* Android SDK updated to 8.0.1
+* Added Face authentication using face matching & passive liveness. [More](https://documentation.idenfy.com/other-fraud/FaceAuthentication)
+
 ## 2.2.1
 * iOS SDK updated to 7.9.1
 * Fixed an issue with document video frames being mixed up
