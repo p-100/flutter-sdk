@@ -41,25 +41,6 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
                 IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTypeFont = UIFont.systemFont(ofSize: 14)
                 IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTypeHighlightedFont = UIFont.boldSystemFont(ofSize: 14)
 
-                let livenessSettings = IdenfyLivenessUISettings()
-                livenessSettings.livenessFrameColor = UIColor.red
-                livenessSettings.livenessIdentificationOvalProgressColor1 = UIColor.white
-                livenessSettings.livenessIdentificationOvalProgressColor2 = UIColor.white
-                livenessSettings.livenessFeedbackBackgroundColor = UIColor.green
-                livenessSettings.livenessFrameBackgroundColor = UIColor.yellow
-                livenessSettings.livenessReadyScreenForegroundColor = UIColor.gray
-                livenessSettings.livenessReadyScreenBackgroundColors = [UIColor.blue]
-                livenessSettings.livenessReadyScreenTextBackgroundColor = UIColor.systemPink
-                livenessSettings.livenessReadyScreenButtonBorderColor = UIColor.red
-                livenessSettings.livenessReadyScreenButtonBackgroundNormalColor = UIColor.orange
-                livenessSettings.livenessReadyScreenButtonBackgroundHighlightedColor = UIColor.blue
-                livenessSettings.livenessReadyScreenButtonBackgroundDisabledColor = UIColor.black
-                livenessSettings.livenessResultScreenForegroundColor = UIColor.red
-                livenessSettings.livenessResultScreenIndicatorColor = UIColor.yellow
-                livenessSettings.livenessResultScreenUploadProgressFillColor = UIColor.green
-                livenessSettings.livenessResultScreenUploadProgressTrackColor = UIColor.black
-                livenessSettings.livenessIdentificationProgressStrokeColor = UIColor.blue
-
                 let idenfySettingsV2 = IdenfyBuilderV2()
                     .withAuthToken(authToken)
                     .withIdenfyToolbarHidden()
