@@ -18,18 +18,98 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
             if let arguments = call.arguments as? [String: Any],
                let authToken = arguments["authToken"] as? String {
 
-                IdenfySplashScreenViewUISettingsV2.idenfySplashScreenViewDescriptionTextColor = UIColor.green
+                //Changing common iDenfy colors
+                IdenfyCommonColors.idenfyMainColorV2 = UIColor.green
+                IdenfyCommonColors.idenfyMainDarkerColorV2 = UIColor.green
+                IdenfyCommonColors.idenfySecondColorV2 = UIColor.black
+                IdenfyCommonColors.idenfyBackgroundColorV2 = UIColor.white
 
-                IdenfyDocumentCameraSessionUISettingsV2.idenfyDocumentCameraPreviewSessionSwitchLensButtonTintColor = UIColor.red
-                IdenfyDocumentCameraSessionUISettingsV2.idenfyDocumentCameraPreviewSessionBackgroundColor = UIColor.yellow
+                //Customizing Tooblar
+                IdenfyToolbarUISettingsV2.idenfyDefaultToolbarLogoIconTintColor = UIColor.blue
+                IdenfyToolbarUISettingsV2.idenfyDefaultToolbarBackIconTintColor = UIColor.blue
+                IdenfyToolbarUISettingsV2.idenfyLanguageSelectionToolbarLanguageSelectionIconTintColor = UIColor.yellow
+                IdenfyToolbarUISettingsV2.idenfyLanguageSelectionToolbarCloseIconTintColor = UIColor.blue
+                IdenfyToolbarUISettingsV2.idenfyCameraPreviewSessionToolbarBackIconTintColor = UIColor.white
+
+                //Changing specific screen colors (Every screen has its own UI Settings class)
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewBackgroundColor = UIColor.white
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewTitleTextColor = UIColor.black
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTableViewCellBorderColor = UIColor.brown
+
+                //Changeing specific screen fonts (Every screen has its own UI Settings class)
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewTitleFont = UIFont.systemFont(ofSize: 20)
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTypeFont = UIFont.systemFont(ofSize: 14)
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTypeHighlightedFont = UIFont.boldSystemFont(ofSize: 14)
+
+                let livenessSettings = IdenfyLivenessUISettings()
+                livenessSettings.livenessFrameColor = UIColor.red
+                livenessSettings.livenessIdentificationOvalProgressColor1 = UIColor.white
+                livenessSettings.livenessIdentificationOvalProgressColor2 = UIColor.white
+                livenessSettings.livenessFeedbackBackgroundColor = UIColor.green
+                livenessSettings.livenessFrameBackgroundColor = UIColor.yellow
+                livenessSettings.livenessReadyScreenForegroundColor = UIColor.gray
+                livenessSettings.livenessReadyScreenBackgroundColors = [UIColor.blue]
+                livenessSettings.livenessReadyScreenTextBackgroundColor = UIColor.systemPink
+                livenessSettings.livenessReadyScreenButtonBorderColor = UIColor.red
+                livenessSettings.livenessReadyScreenButtonBackgroundNormalColor = UIColor.orange
+                livenessSettings.livenessReadyScreenButtonBackgroundHighlightedColor = UIColor.blue
+                livenessSettings.livenessReadyScreenButtonBackgroundDisabledColor = UIColor.black
+                livenessSettings.livenessResultScreenForegroundColor = UIColor.red
+                livenessSettings.livenessResultScreenIndicatorColor = UIColor.yellow
+                livenessSettings.livenessResultScreenUploadProgressFillColor = UIColor.green
+                livenessSettings.livenessResultScreenUploadProgressTrackColor = UIColor.black
+                livenessSettings.livenessIdentificationProgressStrokeColor = UIColor.blue
 
                 let idenfySettingsV2 = IdenfyBuilderV2()
                     .withAuthToken(authToken)
                     .withIdenfyToolbarHidden()
                     .build()
 
+                let idenfyViewsV2: IdenfyViewsV2 = IdenfyViewsBuilderV2()
+                    .withSplashScreenV2View(SplashScreenV2View())
+                    .withProviderSelectionView(ProviderSelectionViewV2())
+                    .withProviderCellView(ProviderCell.self)
+                    .withProviderLoginView(ProviderLoginViewV2())
+                    .withMFAMethodSelectionView(MFAMethodSelectionViewV2())
+                    .withMFAGeneralView(MFAGeneralViewV2())
+                    .withMFACaptchaView(MFACaptchaViewV2())
+                    .withNFCRequiredView(NFCRequiredViewV2())
+                    .withIssuedCountryView(IssuedCountryViewV2())
+                    .withCountrySelectionView(CountrySelectionViewV2())
+                    .withCountryCellView(CountryCell.self)
+                    .withLanguageSelectionView(LanguageSelectionViewV2())
+                    .withLanguageCellView(LanguageCell.self)
+                    .withDocumentSelectionView(DocumentSelectionViewV2())
+                    .withDocumentCellView(DocumentCell.self)
+                    .withConfirmationView(ConfirmationViewV2())
+                    .withDynamicCameraOnBoardingView(DynamicCameraOnBoardingViewV2())
+                    .withStaticCameraOnBoardingView(StaticCameraOnBoardingViewV2())
+                    .withCameraOnBoardingInstructionDescriptionsCellView(InstructionDescriptionsCellV2.self)
+                    .withConfirmationViewDocumentStepCellView(DocumentStepCell.self)
+                    .withCameraPermissionView(CameraPermissionViewV2())
+                    .withDrawerContentView(DrawerContentViewV2())
+                    .withUploadPhotoView(UploadPhotoViewV2())
+                    .withDocumentCameraView(DocumentCameraViewV2())
+                    .withCameraWithRectangleResultViewV2(DocumentCameraResultViewV2())
+                    .withPdfResultView(PdfResultViewV2())
+                    .withFaceCameraView(FaceCameraViewV2())
+                    .withCameraWithoutRectangleResultViewV2(FaceCameraResultViewV2())
+                    .withNFCReadingView(NFCReadingViewV2())
+                    .withNFCReadingTimeOutView(NFCReadingTimeOutViewV2())
+                    .withIdentificationResultsView(IdentificationResultsViewV2())
+                    .withIdentificationResultsStepCellView(ResultsStepCell.self)
+                    .withIdentificationSuccessResultsView(IdentificationSuccessResultsViewV2())
+                    .withIdentificationSuspectedResultsView(IdentificationSuspectedResultsViewV2())
+                    .withManualReviewingStatusWaitingView(ManualReviewingStatusWaitingViewV2())
+                    .withManualReviewingStatusFailedView(ManualReviewingStatusFailedViewV2())
+                    .withManualReviewingStatusApprovedView(ManualReviewingStatusApprovedViewV2())
+                    .withAdditionalSupportView(AdditionalSupportViewV2())
+                    .withFaceAuthenticationSplashScreenV2View(FaceAuthenticationSplashScreenV2View())
+                    .withFaceAuthenticationResultsViewV2(FaceAuthenticationResultsViewV2())
+                    .build()
+
                 let idenfyController = IdenfyController.shared
-                idenfyController.initializeIdenfySDKV2WithManual(idenfySettingsV2: idenfySettingsV2)
+                idenfyController.initializeIdenfySDKV2WithManual(idenfySettingsV2: idenfySettingsV2, idenfyViewsV2: idenfyViewsV2)
                 let idenfyVC = idenfyController.instantiateNavigationController()
 
                 UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
