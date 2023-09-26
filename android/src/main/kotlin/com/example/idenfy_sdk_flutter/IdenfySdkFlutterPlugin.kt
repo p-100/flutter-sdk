@@ -40,7 +40,8 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
     } else if (call.method == "start") {
       mResult = result
 
-      IdenfyCommonColor
+      IdenfyCommonColors.idenfyMainColorV2 = UIColor.green
+      IdenfyCommonColors.idenfyMainDarkerColorV2 = UIColor.green
 
       val idenfySettingsV2 = IdenfySettingsV2.IdenfyBuilderV2()
               .withAuthToken(call.argument<String>("authToken")!!)
