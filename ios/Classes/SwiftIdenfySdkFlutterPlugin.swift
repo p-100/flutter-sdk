@@ -2,6 +2,7 @@ import Flutter
 import UIKit
 import iDenfySDK
 import idenfycore
+import idenfyviews
 
 public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -17,8 +18,14 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
             if let arguments = call.arguments as? [String: Any],
                let authToken = arguments["authToken"] as? String {
 
+               IdenfyCommonColors.idenfyMainColorV2 = UIColor.green
+               IdenfyCommonColors.idenfyMainDarkerColorV2 = UIColor.green
+               IdenfyConfirmationViewUISettingsV2.idenfyDocumentConfirmationViewBackgroundColor = UIColor.red
+               IdenfyConfirmationViewUISettingsV2.idenfyDocumentConfirmationViewTitleTextColor = UIColor.red
+
                 let idenfySettingsV2 = IdenfyBuilderV2()
                     .withAuthToken(authToken)
+                    .withIdenfyToolbarHidden()
                     .build()
 
                 let idenfyController = IdenfyController.shared

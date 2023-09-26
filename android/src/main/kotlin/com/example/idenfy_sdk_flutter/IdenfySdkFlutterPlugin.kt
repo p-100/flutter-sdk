@@ -17,7 +17,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
-import idenfyviews
 
 /** IdenfySdkFlutterPlugin */
 class IdenfySdkFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
@@ -43,12 +42,8 @@ class IdenfySdkFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         } else if (call.method == "start") {
             mResult = result
 
-            IdenfyCommonColors.idenfyMainColorV2 = UIColor.green
-            IdenfyCommonColors.idenfyMainDarkerColorV2 = UIColor.green
-
             val idenfySettingsV2 = IdenfySettingsV2.IdenfyBuilderV2()
                 .withAuthToken(call.argument<String>("authToken")!!)
-                .withIdenfyToolbarHidden()
                 .build();
 
             IdenfyController.getInstance().initializeIdenfySDKV2WithManual(
